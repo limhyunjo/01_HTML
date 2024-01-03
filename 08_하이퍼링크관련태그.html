@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=H, initial-scale=1.0">
+    <title>하이퍼링크관련태그</title>
+</head>
+<body>
+    <h1>a(anchor :연결, 고정) 태그</h1>
+    
+        -현재 html 문서와 다른 html문서를 연결시켜 
+        페이지를 이동할 수 있게 만드는 태그 
+        -a 태그로 감싸진 글 내용== 하이퍼 텍스트(하이퍼 링크)
+
+    - 다른 문서와 구분되는 html만의 핵심 기능
+<hr>
+<h3>a 태그 테스트</h3>
+    <a href="07_ 영역관련태그.html">7번으로 이동</a>
+
+    <hr>
+    <h3>a 태그의 속성</h3>
+    <pre>
+        -href(HyperText REFerence) : 연결할 주소를 지정하는 속성
+        -target= "-blank" : 새 탭에서 열기
+    </pre>
+    <ol>
+        <li><a href="01_글자관련태그.html" target="blank">글자관련태그</a></li>
+        <li><a href="02_목록관련태그.html">목록관련태그</a></li>
+
+        <li><a href="03_연습문제1.html">연습문제1.관련태그</a></li>
+        <li><a href="04_표관련태그.html">표관련태그</a></li>
+        <li><a href="05_연습문제2.html">연습문제2관련태그</a></li>
+        <li><a href="06_이미지관련태그.html">이미지관련태그</a></li>
+        <li><a href="07_영역관련태그.html">영역관련태그</a></li>
+    </ol>
+    <h1>페이지 내부에서 점프하기</h1>
+    <pre>
+        -한 페이지 내부에서 지정된 id 속성을 가진 (요소) 태그로 이동
+
+        *id(식별자)속성 : 
+        하나의 html 문서 내에서 
+        각각의 html 요소 (태그)를 구분하는 식별 값
+        -> 중복되는 id가 존재하면 안됨
+    </pre>
+    <!-- # 은 id를 나타내는 특수 기호 -->
+    <ul>
+        <li><a href="#image1"></a></li>
+        <li><a href="#image2"></a></li>
+        <li><a href="#image3"></a></li>
+    </ul>
+
+
+    <h3 id="image1">1번 이미지</h3>
+    <img src="images/flowers/flower1.jpg">
+
+    <h3 id="image2">2번 이미지</h3>
+    <img src="images/flowers/flower2.jpg">
+
+    <h3 id="image3">3번 이미지</h3>
+    <img src="images/flowers/flower3.jpg">
+
+ 
+    <!-- JS 맛보기 -->
+ <script>
+    const params = new URL(location.href).searchParams;
+
+    const nameresult = document.getElementById("name-result");
+
+    nameresult.innerText = params.get("user-name");
+  </script>
+
+    <hr>
+    <h3> 입력된 사용자 아이디 : <span id="id-result"></span> </h3>
+    <h3> 입력된 사용자 비밀번호 : <span id="pw-result"></span> </h3>
+  
+    <script>
+       const idResult = document.getElementById("id-result");
+       const pwResult = document.getElementById("pw-result");
+  
+       idResult.innerText = params.get("input-id");
+       pwResult.innerText = params.get("input-pw");
+    </script>
+     
+
+
+
+     <hr>
+
+     <h3> 숫자 관련 input 태그</h3>
+
+     <pre>
+        type="number": 숫자만 입력 가능한 상자
+
+        type="range" : 슬라이드바를 이용해서 숫자를 지정
+                 ( 단독 사용 없이 자바 스크립트(js)와 혼용함)
+
+       속성
+       min :최소값
+       max :최댓값
+       step :숫자가 증가 감소하는 간격 단계
+       value :초기값 (기본 값) 지정
+     </pre>
+ 
+     <form action="result.html"></form>
+      점수 입력  : <input type="number" 
+                min="0" 
+                max="100"
+                step="10"
+                value="30"
+                name="score1">
+
+  <br> 
+  점수입력 : <input type="range">
+            min="50"
+            max="200"
+            step="5"
+            value="100"
+            name="step2"
+
+        <button></button>
+        <hr>
+        <h3> 입력된 score1 : <span id="score1-result"></span> </h3>
+        <h3> 입력된 score2 : <span id="score2-result"></span> </h3>
+      
+        <script>
+           const score1 = document.getElementById("score1-result");
+           const score2 = document.getElementById("score2-result");
+      
+           score1.innerText = params.get("score1");
+           score2.innerText = params.get("score2");
+        </script>
+
+        <hr>
+
+        <h3> 날짜/ 시간 관련 input 태그</h3>
+        <ui>
+            <li><input type="date"></li>
+            <li><input type="month"></li>
+            <li><input type="week"></li>
+            <li><input type="time"></li>
+            <li><input type="datetime-local"></li>
+        </ui>
+
+
+</body>
+</html>
